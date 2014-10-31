@@ -5,10 +5,10 @@ instaPopApp.directive('popImage', function () {
             post: "="
         },
         controller: function($scope) {
-            console.log($scope.post)
+            // console.log($scope.post)
         },
         link: function(scope, element, attrs) {
-            console.log("This is what you want:", element)
+            // console.log("This is what you want:", element)
             element.contents().eq(3).css({"border" : "5px solid black"})
         },
         replace: true,
