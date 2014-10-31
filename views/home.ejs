@@ -1,0 +1,14 @@
+<% include header %>
+<button ng-click="count = count + 1" ng-init="count=0">
+  Reload Data
+</button>
+<span>
+  You've reloaded the Instagram stream <strong> {{count}} </strong> times.
+</span>
+<div id="popular-list" ng-controller="PopularListController">
+	<div ng-repeat="post in posts">
+    <pop-image post="post"></pop-image>
+ 	</div>
+</div>
+
+<% include footer %>
