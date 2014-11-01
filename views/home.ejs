@@ -1,5 +1,6 @@
 <% include header %>
 
+<canvas id="income" width="600" height="400"></canvas>
 
 <div id="popular-list" ng-controller="PopularListController">
 	<button ng-click="loadPosts(); reloadCount = reloadCount + 1" ng-init="reloadCount=0">
@@ -12,7 +13,36 @@
 
 	<div ng-repeat="post in posts">
     	<pop-image post="post"></pop-image>
+    	<pop-chart stat="stat"></pop-chart>
  	</div>
 </div>
+
+
+
+        <script>
+        	var barOptions = {
+        		animation: true,
+        		scaleOverride: true,
+			    scaleSteps: 25,
+			    scaleStepWidth: 20,
+			    scaleStartValue: 0
+        	}
+
+        	var barData = {
+				labels : ["Likes","Comments"],
+				datasets : [
+					{
+						fillColor : "#48A497",
+						strokeColor : "#48A4D1",
+						data : [456, 400]
+					}
+
+				]
+			}
+
+            var income = document.getElementById("income").getContext("2d");
+			new Chart(income).Bar(barData, barOptions);
+
+        </script>
 
 <% include footer %>

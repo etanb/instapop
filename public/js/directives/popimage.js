@@ -5,7 +5,8 @@ instaPopApp.directive('popImage', function () {
             post: "="
         },
         controller: function($scope) {
-            // console.log($scope.post)
+            console.log("Likes: ", $scope.post.likes.count)
+            console.log("Comments: ", $scope.post.comments.count)
         },
         link: function(scope, element, attrs) {
             // console.log("This is what you want:", element)
@@ -15,3 +16,50 @@ instaPopApp.directive('popImage', function () {
 		templateUrl: '/js/directives/partials/popimage.html'
 	}
 })
+
+// instaPopApp.directive('popChart', function () {
+//     var barOptions = {
+//         animation: true,
+//         scaleOverride: true,
+//         scaleSteps: 25,
+//         scaleStepWidth: 20,
+//         scaleStartValue: 0
+//     }
+
+//     var likeBarData = {
+//         labels : ["Likes"],
+//         datasets : [
+//             {
+//                 fillColor : "green",
+//                 data : [456]
+//             }
+
+//         ]
+//     }
+
+//     var commentBarData = {
+//         labels : ["Comments"],
+//         datasets : [
+//             {
+//                 fillColor : "blue",
+//                 data : [456]
+//             }
+
+//         ]
+//     }
+
+//     var likeBar = document.getElementById("income").getContext("2d");
+//     var commentBar = document.getElementById("income").getContext("2d");
+//     new Chart(likeBar).Bar(likeBarData, barOptions);
+//     new Chart(commentBar).Bar(commentBarData, barOptions);
+
+//     return {
+//         restrict: 'EA',
+//         scope: {
+//             stat: "="
+//             console.log(stat)
+//         },
+//         replace: true,
+//         templateUrl: '/js/directives/partials/popchart.html'
+//     }
+// })
