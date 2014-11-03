@@ -61,7 +61,7 @@ instaPopApp.directive('popChart', function () {
                 }
                 var likeID = $scope.post.user.username + "Likes"
                 var commentID = $scope.post.user.username + "Comments"
-                
+
                 var likeBar = $element.contents()[0].getContext("2d");
                 var commentBar = $element.contents()[2].getContext("2d");
 
@@ -72,6 +72,20 @@ instaPopApp.directive('popChart', function () {
             
         }
 
+})
+
+instaPopApp.directive('popNav', function () {
+    return {
+        restrict: 'E',
+        scope: {
+            post: "="
+        },
+        link: function(scope, element, attrs) {
+            // console.log("This is what you want:", element)
+        },
+        replace: true,
+        templateUrl: '/js/directives/partials/popnav.html'
+    }
 })
 
 

@@ -1,8 +1,20 @@
 <% include header %>
 
-<i class="fa fa-cog fa-spin"></i>
-
 <div id="popular-list" ng-controller="PopularListController">
+
+  <div class="navbar navbar-fixed-top alt" data-spy="affix" data-offset-top="1000">
+    <div class="container">
+      <div class="navbar-header">
+        <a href="#" class="navbar-brand">Choose A User   <i class="fa fa-arrow-circle-right"></i></a>
+      </div>
+      <div class="navbar-collapse collapse" id="navbar">
+        <ul ng-repeat="post in posts" class="nav navbar-nav">
+            <pop-nav post="post"></pop-nav>
+        </ul>
+      </div>
+     </div>
+  </div>
+
 	<button ng-click="loadPosts(); reloadCount = reloadCount + 1" ng-init="reloadCount=0">
 	  Reload Data
 	</button>
