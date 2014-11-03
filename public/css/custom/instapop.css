@@ -200,3 +200,18 @@ footer {
 }
 
 /* -- end custom css for Bootstrap 3.x --*/
+
+#popular-list {
+  margin-top: 80px;
+}
+
+.pop-image-container {
+  text-align: center;
+  width: 550px;
+  height: 730px;
+  border: 13px solid white;
+  -webkit-box-shadow: 0px 0px 2px 0px;
+  box-shadow: 0px 0px 2px 0px;
+  display: block;
+  margin-bottom: 50px;
+}

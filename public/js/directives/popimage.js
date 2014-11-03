@@ -39,7 +39,7 @@ instaPopApp.directive('popChart', function () {
             },
             link: function($scope, $element, $attrs) {
                 var likeBarData = {
-                    labels : ["Likes"],
+                    labels : ["Likes: " + $scope.post.likes.count],
                     datasets : [
                         {
                             fillColor : "green",
@@ -50,7 +50,7 @@ instaPopApp.directive('popChart', function () {
                 }
 
                 var commentBarData = {
-                    labels : ["Comments"],
+                    labels : ["Comments: " + $scope.post.comments.count],
                     datasets : [
                         {
                             fillColor : "blue",
