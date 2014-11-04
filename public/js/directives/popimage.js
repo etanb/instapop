@@ -18,11 +18,19 @@ instaPopApp.directive('popImage', function () {
 })
 
 instaPopApp.directive('popChart', function () {
-        var barOptions = {
+        var likeBarOptions = {
             animation: true,
             scaleOverride: true,
-            scaleSteps: 25,
-            scaleStepWidth: 20,
+            scaleSteps: 5,
+            scaleStepWidth: 10000,
+            scaleStartValue: 0
+        }
+
+        var commentBarOptions = {
+            animation: true,
+            scaleOverride: true,
+            scaleSteps: 5,
+            scaleStepWidth: 100,
             scaleStartValue: 0
         }
 
@@ -65,8 +73,8 @@ instaPopApp.directive('popChart', function () {
                 var likeBar = $element.contents()[0].getContext("2d");
                 var commentBar = $element.contents()[2].getContext("2d");
 
-                new Chart(likeBar).Bar(likeBarData, barOptions);
-                new Chart(commentBar).Bar(commentBarData, barOptions);
+                new Chart(likeBar).Bar(likeBarData, likeBarOptions);
+                new Chart(commentBar).Bar(commentBarData, commentBarOptions);
                 
             }
             
