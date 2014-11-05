@@ -212,6 +212,12 @@ instaPopApp.directive('popUser', function () {
                 var userLine = $element.contents()[5].getContext("2d");
 
                 new Chart(userLine).Line(userLikeData, userLineOptions);
+                
+                angular.element(document).ready(function() {
+                    $(".user-post-container").hide()
+                })
+
+                
             })
             
         },
@@ -220,13 +226,4 @@ instaPopApp.directive('popUser', function () {
     }
 })
 
-                //     // $scope.userdatas.forEach( function (value){
-                // //     console.log("haaaaaay")
-                // //     console.log(value)
-                // // })
-                // console.log("STUFFFFF")
-                // // console.log($scope)
-                // testing = $scope
-                // console.log(img1date)
-                
 
