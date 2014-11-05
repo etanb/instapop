@@ -1,3 +1,4 @@
+
 instaPopApp.directive('popImage', function () {
 	return {
 		restrict: 'E',
@@ -105,6 +106,26 @@ instaPopApp.directive('popNav', function () {
 })
 
 instaPopApp.directive('popUser', function () {
+
+    var img1date;
+    var img1likes;
+    var img2date;
+    var img2likes;
+    var img3date;
+    var img3likes;
+    var img4date;
+    var img4likes;
+    var img5date;
+    var img5likes;
+    var img6date;
+    var img6likes;
+    var img7date;
+    var img7likes;
+    var img8date;
+    var img8likes;
+    var img9date;
+    var img9likes;
+
     return {
         restrict: 'E',
         controller: function($scope, $http) {
@@ -117,19 +138,97 @@ instaPopApp.directive('popUser', function () {
                   }
                 }).success(function(data) {
                   $scope.userdatas = data.data
-                  // console.log($scope.userdatas)
+                  console.log("HAY")
+                  
+                  var date = new Date($scope.userdatas[0].created_time * 1000)
+                  img1date = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear()
+                  img1likes = $scope.userdatas[0].likes.count
+
+                  var date = new Date($scope.userdatas[1].created_time * 1000)
+                  img2date = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear()
+                  img2likes = $scope.userdatas[1].likes.count
+
+                  var date = new Date($scope.userdatas[2].created_time * 1000)
+                  img3date = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear()
+                  img3likes = $scope.userdatas[2].likes.count
+
+                  var date = new Date($scope.userdatas[3].created_time * 1000)
+                  img4date = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear()
+                  img4likes = $scope.userdatas[3].likes.count
+
+                  var date = new Date($scope.userdatas[4].created_time * 1000)
+                  img5date = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear()
+                  img5likes = $scope.userdatas[4].likes.count
+
+                  var date = new Date($scope.userdatas[5].created_time * 1000)
+                  img6date = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear()
+                  img6likes = $scope.userdatas[5].likes.count
+
+                  var date = new Date($scope.userdatas[6].created_time * 1000)
+                  img7date = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear()
+                  img7likes = $scope.userdatas[6].likes.count
+
+                  var date = new Date($scope.userdatas[7].created_time * 1000)
+                  img8date = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear()
+                  img8likes = $scope.userdatas[7].likes.count
+
+                  var date = new Date($scope.userdatas[8].created_time * 1000)
+                  img9date = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear()
+                  img9likes = $scope.userdatas[8].likes.count
+
+                  // console.log(img1likes, img2likes, img3likes, img4likes, img5likes, img6likes)
+
                 })
             }
 
             userMediaCall($scope.post.user.id)
+
         },
-        link: function($scope, $element, $attrs) {
+        link: function($scope, $element, $attrs, img1date, img2date, img3date, img4date, img5date, img6date, img7date, img8date, img9date, img1likes, img2likes, img3likes, img4likes, img5likes, img6likes, img7likes, img8likes, img9likes) {
+
+
+            // $scope.userdatas.forEach( function (value){
+            //     console.log("haaaaaay")
+            //     console.log(value)
+            // })
+            console.log("STUFFFFF")
+            console.log(img1date)
+            var userLineOptions = {
+
+            }
+            
+            var userLikeData = {
+                labels: [img1date, img2date, img3date, img4date, img5date, img6date, img7date, img8date, img9date],
+                datasets: [
+                    {
+                        label: "Like Data",
+                        fillColor: "rgba(151,187,205,0.2)",
+                        strokeColor: "rgba(151,187,205,1)",
+                        pointColor: "rgba(151,187,205,1)",
+                        pointStrokeColor: "#fff",
+                        pointHighlightFill: "#fff",
+                        pointHighlightStroke: "rgba(151,187,205,1)",
+                        data: [img1likes, img2likes, img3likes, img4likes, img5likes, img6likes, img7likes, img8likes, img9likes]
+                    }
+
+                ]
+            };
+
             var userLine = $element.contents()[15].getContext("2d");
 
-            new Chart(userLine).Line(userLikeData, userBarOptions);
+            new Chart(userLine).Line(userLikeData, userLineOptions);
         },
         replace: true,
         templateUrl: '/js/directives/partials/popuser.html'
     }
 })
+
+// date.getDate()
+// 5
+// date.getMonth()
+// 10
+// date.getFullYear()
+// 2014
+// date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()
+// "5/10/2014"
 
