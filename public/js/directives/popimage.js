@@ -117,52 +117,19 @@ instaPopApp.directive('popUser', function () {
                   }
                 }).success(function(data) {
                   $scope.userdatas = data.data
-                  console.log($scope.userdatas)
+                  // console.log($scope.userdatas)
                 })
             }
 
             userMediaCall($scope.post.user.id)
         },
         link: function($scope, $element, $attrs) {
+            var userLine = $element.contents()[15].getContext("2d");
 
+            new Chart(userLine).Line(userLikeData, userBarOptions);
         },
         replace: true,
         templateUrl: '/js/directives/partials/popuser.html'
     }
 })
-
-//     var barOptions = {
-//         animation: true,
-//         scaleOverride: true,
-//         scaleSteps: 25,
-//         scaleStepWidth: 20,
-//         scaleStartValue: 0
-//     }
-
-//     var likeBarData = {
-//         labels : ["Likes"],
-//         datasets : [
-//             {
-//                 fillColor : "green",
-//                 data : [456]
-//             }
-
-//         ]
-//     }
-
-//     var commentBarData = {
-//         labels : ["Comments"],
-//         datasets : [
-//             {
-//                 fillColor : "blue",
-//                 data : [456]
-//             }
-
-//         ]
-//     }
-
-    // var likeBar = document.getElementById("income").getContext("2d");
-    // var commentBar = document.getElementById("income").getContext("2d");
-    // new Chart(likeBar).Bar(likeBarData, barOptions);
-    // new Chart(commentBar).Bar(commentBarData, barOptions);
 
