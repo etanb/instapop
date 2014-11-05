@@ -4,13 +4,21 @@ instaPopApp.directive('popImage', function () {
         scope: {
             post: "="
         },
-        // controller: function($scope) {
-        //     console.log("Likes: ", $scope.post.likes.count)
-        //     console.log("Comments: ", $scope.post.comments.count)
-        // },
+        controller: function($scope) {
+            // console.log("Likes: ", $scope.post.likes.count)
+            // console.log("Comments: ", $scope.post.comments.count)
+
+        },
         link: function(scope, element, attrs) {
             // console.log("This is what you want:", element)
             element.contents().eq(3).css({"border" : "5px solid black"})
+
+            angular.element(document).ready(function() {
+                $(".user-info-icon").click( function() {
+                var elementToHide = $(this).parents().eq(2).attr("id")
+                    $("#" + elementToHide).hide()
+                })
+            })
         },
         replace: true,
 		templateUrl: '/js/directives/partials/popimage.html'
@@ -96,6 +104,32 @@ instaPopApp.directive('popNav', function () {
     }
 })
 
+instaPopApp.directive('popUser', function () {
+    return {
+        restrict: 'E',
+        controller: function($scope, $http) {
+            function userMediaCall (userid) {
+                $http.jsonp('https://api.instagram.com/v1/users/' + userid + '/media/recent', {
+                  params: {
+                    client_id: '4d5374af01d74b18a3ff5372cdb42567',
+                    count: 9,
+                    callback: 'JSON_CALLBACK'
+                  }
+                }).success(function(data) {
+                  $scope.userdatas = data.data
+                  console.log($scope.userdatas)
+                })
+            }
+
+            userMediaCall($scope.post.user.id)
+        },
+        link: function($scope, $element, $attrs) {
+
+        },
+        replace: true,
+        templateUrl: '/js/directives/partials/popuser.html'
+    }
+})
 
 //     var barOptions = {
 //         animation: true,

@@ -1,4 +1,5 @@
 $( document ).ready(function() {
+    console.log($("body"))
         /* smooth scrolling for scroll to top */
     $('.scroll-top').click(function(){
       $('body,html').animate({scrollTop:0},800);
@@ -10,4 +11,9 @@ $( document ).ready(function() {
 
     /* highlight the top nav as scrolling occurs */
     $('body').scrollspy({ target: '#navbar' })
+
+    $(".user-info-icon").click( function() {
+        var elementToHide = $(this).parents().eq(2).attr("id")
+        console.log(elementToHide)
+    })
 });

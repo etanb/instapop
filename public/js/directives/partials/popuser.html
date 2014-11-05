@@ -1,0 +1,65 @@
+<div>
+		<span>
+			<h3 class="user-info-name"></h3><i class="user-info-icon fa fa-times fa-lg"></i>
+		</span>
+		<div class="flip-container" ontouchstart="this.classList.toggle('hover');">
+			<div class="flipper">
+				<div class="front">
+					<span class="user-post-images">
+						<div ng-repeat="userdata in userdatas | limitTo: 1">
+							<h3>USER: {{userdata.user.username}}</h3>
+							<img height="300" width="300" src="{{userdata.user.profile_picture}}" />
+						</div>
+					</span>
+				</div>
+				<div class="back">
+					<div>
+						<h3>MOST RECENT GRAMS</h3>
+						<span class="user-post-images">
+							<div ng-repeat="userdata in userdatas | limitTo: 3">
+								<img height="100" width="100" src="{{userdata.images.thumbnail.url}}" />
+							</div>
+						</span>
+						<br />
+						<span class="user-post-images">
+							<div ng-repeat="userdata in userdatas | limitTo: 6 | limitTo: -3">
+								<img height="100" width="100" src="{{userdata.images.thumbnail.url}}" />
+							</div>
+						</span>
+						<br />
+						<span class="user-post-images">
+							<div ng-repeat="userdata in userdatas | limitTo: 9 | limitTo: -3">
+								<img height="100" width="100" src="{{userdata.images.thumbnail.url}}" />
+							</div>
+						</span>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- {{post.images.standard_resolution.url}} -->
+		
+		<!-- <div>
+			<span class="user-post-images">
+				<div ng-repeat="userdata in userdatas | limitTo: 3">
+					<img height="100" width="100" src="{{userdata.images.thumbnail.url}}" />
+				</div>
+			</span>
+			<br />
+			<span class="user-post-images">
+				<div ng-repeat="userdata in userdatas | limitTo: 6 | limitTo: -3">
+					<img height="100" width="100" src="{{userdata.images.thumbnail.url}}" />
+				</div>
+			</span>
+			<br />
+			<span class="user-post-images">
+				<div ng-repeat="userdata in userdatas | limitTo: 9 | limitTo: -3">
+					<img height="100" width="100" src="{{userdata.images.thumbnail.url}}" />
+				</div>
+			</span>
+		</div> -->
+		<br />
+		
+	  <br />
+	  <br />
+		<p><i></i></p>
+</div>
