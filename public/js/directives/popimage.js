@@ -1,4 +1,6 @@
+var testing;
 
+    
 instaPopApp.directive('popImage', function () {
 	return {
 		restrict: 'E',
@@ -129,6 +131,7 @@ instaPopApp.directive('popUser', function () {
     return {
         restrict: 'E',
         controller: function($scope, $http) {
+
             function userMediaCall (userid) {
                 $http.jsonp('https://api.instagram.com/v1/users/' + userid + '/media/recent', {
                   params: {
@@ -138,7 +141,7 @@ instaPopApp.directive('popUser', function () {
                   }
                 }).success(function(data) {
                   $scope.userdatas = data.data
-                  console.log("HAY")
+                  
                   
                   var date = new Date($scope.userdatas[0].created_time * 1000)
                   img1date = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear()
@@ -175,60 +178,55 @@ instaPopApp.directive('popUser', function () {
                   var date = new Date($scope.userdatas[8].created_time * 1000)
                   img9date = date.getMonth() + "/" + date.getDate() + "/" + date.getFullYear()
                   img9likes = $scope.userdatas[8].likes.count
-
-                  // console.log(img1likes, img2likes, img3likes, img4likes, img5likes, img6likes)
+                  $scope.$broadcast("Data_Ready");
 
                 })
             }
-
             userMediaCall($scope.post.user.id)
 
         },
-        link: function($scope, $element, $attrs, img1date, img2date, img3date, img4date, img5date, img6date, img7date, img8date, img9date, img1likes, img2likes, img3likes, img4likes, img5likes, img6likes, img7likes, img8likes, img9likes) {
+        link: function($scope, $element, $attrs) {
 
+            $scope.$on("Data_Ready", function  () {
 
-            // $scope.userdatas.forEach( function (value){
-            //     console.log("haaaaaay")
-            //     console.log(value)
-            // })
-            console.log("STUFFFFF")
-            console.log(img1date)
-            var userLineOptions = {
+                var userLineOptions = {
 
-            }
+                }
+                
+                var userLikeData = {
+                    labels: [img1date, img2date, img3date, img4date, img5date, img6date, img7date, img8date, img9date],
+                    datasets: [
+                        {
+                            label: "Like Data",
+                            fillColor: "rgba(151,187,205,0.2)",
+                            strokeColor: "rgba(151,187,205,1)",
+                            pointColor: "rgba(151,187,205,1)",
+                            pointStrokeColor: "#fff",
+                            pointHighlightFill: "#fff",
+                            pointHighlightStroke: "rgba(151,187,205,1)",
+                            data: [img1likes, img2likes, img3likes, img4likes, img5likes, img6likes, img7likes, img8likes, img9likes]
+                        }
+
+                    ]
+                };
+                var userLine = $element.contents()[5].getContext("2d");
+
+                new Chart(userLine).Line(userLikeData, userLineOptions);
+            })
             
-            var userLikeData = {
-                labels: [img1date, img2date, img3date, img4date, img5date, img6date, img7date, img8date, img9date],
-                datasets: [
-                    {
-                        label: "Like Data",
-                        fillColor: "rgba(151,187,205,0.2)",
-                        strokeColor: "rgba(151,187,205,1)",
-                        pointColor: "rgba(151,187,205,1)",
-                        pointStrokeColor: "#fff",
-                        pointHighlightFill: "#fff",
-                        pointHighlightStroke: "rgba(151,187,205,1)",
-                        data: [img1likes, img2likes, img3likes, img4likes, img5likes, img6likes, img7likes, img8likes, img9likes]
-                    }
-
-                ]
-            };
-
-            var userLine = $element.contents()[15].getContext("2d");
-
-            new Chart(userLine).Line(userLikeData, userLineOptions);
         },
         replace: true,
         templateUrl: '/js/directives/partials/popuser.html'
     }
 })
 
-// date.getDate()
-// 5
-// date.getMonth()
-// 10
-// date.getFullYear()
-// 2014
-// date.getDate() + "/" + date.getMonth() + "/" + date.getFullYear()
-// "5/10/2014"
+                //     // $scope.userdatas.forEach( function (value){
+                // //     console.log("haaaaaay")
+                // //     console.log(value)
+                // // })
+                // console.log("STUFFFFF")
+                // // console.log($scope)
+                // testing = $scope
+                // console.log(img1date)
+                
 
