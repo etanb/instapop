@@ -246,7 +246,7 @@ background-color: rgba(11,11,176,.3)
   display: inline-block;
 }
 
-.user-info-icon {
+.user-info-icon, .user-cancel {
   float: right;
 }
 

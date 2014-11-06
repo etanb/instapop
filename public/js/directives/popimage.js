@@ -17,9 +17,14 @@ instaPopApp.directive('popImage', function () {
             element.contents().eq(3).css({"border" : "5px solid black"})
 
             angular.element(document).ready(function() {
+                
                 $(".user-info-icon").click( function() {
-                var elementToHide = $(this).parents().eq(2).attr("id")
+                    var elementToHide = $(this).parents().eq(2).attr("id")
+
                     $("#" + elementToHide).hide()
+
+                    var elementToShow = $(this).parents().eq(3).children().eq(1).children()
+                    elementToShow.show()
                 })
             })
         },
@@ -213,12 +218,19 @@ instaPopApp.directive('popUser', function () {
 
                 new Chart(userLine).Line(userLikeData, userLineOptions);
                 
-                angular.element(document).ready(function() {
-                    $(".user-post-container").hide()
-                })
-
                 
             })
+                angular.element(document).ready(function() {
+                    $(".user-post-container").hide()
+                    $(".user-cancel").click( function() {
+                        var elementToHide = $(this).parents().eq(3).children().eq(1).children()
+
+                        elementToHide.hide()
+
+                        var elementToShow = $(this).parents().eq(3).attr("id")
+                        $("#" + elementToShow + "-post-section").show()
+                    })
+                })
             
         },
         replace: true,

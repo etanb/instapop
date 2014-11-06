@@ -16,4 +16,5 @@ $( document ).ready(function() {
         var elementToHide = $(this).parents().eq(2).attr("id")
         console.log(elementToHide)
     })
+    
 });
