@@ -1,6 +1,7 @@
 var instaPopApp = angular.module('instaPop', []);
 
-instaPopApp.controller('PopularListController', function($timeout, $scope, $http){
+instaPopApp.controller('PopularListController', function($scope, $http){
+
 
   function popularMediaCall () {
     $http.jsonp('https://api.instagram.com/v1/media/popular', {

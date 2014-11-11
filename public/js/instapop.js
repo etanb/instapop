@@ -12,9 +12,9 @@ $( document ).ready(function() {
     /* highlight the top nav as scrolling occurs */
     $('body').scrollspy({ target: '#navbar' })
 
-    $(".user-info-icon").click( function() {
-        var elementToHide = $(this).parents().eq(2).attr("id")
-        console.log(elementToHide)
-    })
+    // $(".user-info-icon").click( function() {
+    //     var elementToHide = $(this).parents().eq(2).attr("id")
+    //     console.log(elementToHide)
+    // })
     
 });
