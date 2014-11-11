@@ -16,6 +16,7 @@ instaPopApp.directive('popImage', function () {
             // console.log("This is what you want:", element)
             element.contents().eq(3).css({"border" : "5px solid black"})
 
+            //          <h3 class="user-info-name">{{post.user.full_name}}</h3><i ng-click="toggleCard()" class="user-info-icon fa fa-info-circle fa-lg"></i>
             scope.mainView = false;
             scope.toggleCard = function() {
                 console.log("hi!");
