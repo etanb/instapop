@@ -24,12 +24,15 @@
 	</span>
 
 	<div id="{{post.user.username}}" class="pop-image-container center-block" ng-repeat="post in posts">
-    <span id="{{post.user.username + '-post-section'}}">
+    <span>
+      <i ng-click="goCats = !goCats" class="user-info-icon fa fa-info-circle fa-lg"></i>
+    </span>
+    <span ng-hide="goCats" id="{{post.user.username + '-post-section'}}">
     	<pop-image post="post"></pop-image>
     	<pop-chart post="post"></pop-chart>
     </span>
 
-    <span id="{{post.user.username + '-user-section'}}">
+    <span ng-show="goCats" id="{{post.user.username + '-user-section'}}">
       <pop-user></pop-user>
     </span>
  	</div>

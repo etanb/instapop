@@ -45,6 +45,10 @@ img.grayscale {
     -webkit-filter: grayscale(100%); /* Chrome 19+, Safari 6+, Safari 6+ iOS */
 }
 
+.pop-image-container img {
+  border: 5px solid black;
+}
+
 .icon-bar {
    background-color:#fff;
 }

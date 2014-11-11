@@ -14,21 +14,23 @@ instaPopApp.directive('popImage', function () {
         },
         link: function($scope, element, attrs) {
             // console.log("This is what you want:", element)
-            element.contents().eq(3).css({"border" : "5px solid black"})
+            // element.contents().eq(3).css({"border" : "5px solid black"})
             
             // $scope.userView = true
 
-            // $scope.specificUser = $scope.post.user.username
+            $scope.specificUser = $scope.post.user.username
 
 
-            // $scope.toggleUser = function() {
-            //     // var userView = falsex
-            //     console.log($scope.userView)
+            $scope.offUser = function() {
+                // var userView = falsex
+                // console.log($scope.userView)
 
-            //     console.log($scope.specificUser)
-            //     console.log($scope)
-            //     $scope.userView = !$scope.userView
-            // }
+                console.log($scope.specificUser)
+                // console.log($scope)
+                // $scope.userView = !$scope.userView
+                $("#" + $scope.specificUser + "-post-section").hide()
+                $("#" + $scope.specificUser + "-user-section").show()
+            }
             //          <h3 class="user-info-name">{{post.user.full_name}}</h3><i ng-click="toggleCard()" class="user-info-icon fa fa-info-circle fa-lg"></i>
             
             
@@ -37,17 +39,17 @@ instaPopApp.directive('popImage', function () {
             //     scope.mainView = !scope.mainView;
             // }
 
-            angular.element(document).ready(function() {
+            // angular.element(document).ready(function() {
                 
-                $(".user-info-icon").click( function() {
-                    var elementToHide = $(this).parents().eq(2).attr("id")
+            //     $(".user-info-icon").click( function() {
+            //         var elementToHide = $(this).parents().eq(2).attr("id")
 
-                    $("#" + elementToHide).hide()
+            //         $("#" + elementToHide).hide()
 
-                    var elementToShow = $(this).parents().eq(3).children().eq(1).children()
-                    elementToShow.show()
-                })
-            })
+            //         var elementToShow = $(this).parents().eq(3).children().eq(1).children()
+            //         elementToShow.show()
+            //     })
+            // })
         },
         replace: true,
 		templateUrl: '/js/directives/partials/popimage.html'
@@ -106,7 +108,7 @@ instaPopApp.directive('popChart', function () {
                 }
                 var likeID = $scope.post.user.username + "Likes"
                 var commentID = $scope.post.user.username + "Comments"
-                
+
                 var likeBar = $element.contents()[1].getContext("2d");
                 var commentBar = $element.contents()[3].getContext("2d");
 
@@ -124,9 +126,6 @@ instaPopApp.directive('popNav', function () {
         restrict: 'E',
         scope: {
             post: "="
-        },
-        link: function(scope, element, attrs) {
-            // console.log("This is what you want:", element)
         },
         replace: true,
         templateUrl: '/js/directives/partials/popnav.html'
@@ -213,6 +212,8 @@ instaPopApp.directive('popUser', function () {
         },
         link: function($scope, $element, $attrs) {
 
+            console.log($scope.userView)
+
             $scope.$on("Data_Ready", function  () {
 
                 var userLineOptions = {
@@ -241,25 +242,6 @@ instaPopApp.directive('popUser', function () {
                 
                 
             })
-                // angular.element(document).ready( function() {
-                //     console.log($scope.specificUser)
-                //     if ($scope.userView === false) {
-                //         $("#" + $scope.specificUser + "-post-section").hide()
-                //     }
-                //     // $(".user-post-container").hide()
-                // })
-                angular.element(document).ready(function() {
-                    $(".user-post-container").hide()
-                    $(".user-cancel").click( function() {
-                        var elementToHide = $(this).parents().eq(3).children().eq(1).children()
-
-                        elementToHide.hide()
-
-                        var elementToShow = $(this).parents().eq(3).attr("id")
-                        $("#" + elementToShow + "-post-section").show()
-                    })
-                })
-            
         },
         replace: true,
         templateUrl: '/js/directives/partials/popuser.html'
