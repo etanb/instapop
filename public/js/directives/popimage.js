@@ -16,6 +16,12 @@ instaPopApp.directive('popImage', function () {
             // console.log("This is what you want:", element)
             element.contents().eq(3).css({"border" : "5px solid black"})
 
+            scope.mainView = false;
+            scope.toggleCard = function() {
+                console.log("hi!");
+                scope.mainView = !scope.mainView;
+            }
+
             angular.element(document).ready(function() {
                 
                 $(".user-info-icon").click( function() {
